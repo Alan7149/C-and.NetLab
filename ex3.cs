@@ -1,6 +1,5 @@
 using System;
-
-class Program
+class Lab1c
 {
     static void Main(string[] args)
     {
@@ -12,51 +11,42 @@ class Program
             switch (choice)
             {
                 case 1:
-                    Addition();
+                    Add();
                     break;
                 case 2:
-                    Subtraction();
+                    Sub();
                     break;
                 case 3:
-                    Multiplication();
+                    Multi();
                     break;
                 case 4:
-                    Division();
+                    Div();
                     break;
                 case 5:
-                    Modulus();
-                    break;
-                case 6:
-                    Console.WriteLine("Exiting calculator...");
+                    Console.WriteLine("Exit");
                     return;
                 default:
-                    Console.WriteLine("Invalid choice. Please try again.");
+                    Console.WriteLine("Invalid choice");
                     break;
             }
-
             Console.WriteLine();
         }
     }
-
     static void DisplayMenu()
     {
-        Console.WriteLine("Welcome to the Interactive Calculator!");
         Console.WriteLine("Please select an operation:");
         Console.WriteLine("1. Addition");
         Console.WriteLine("2. Subtraction");
         Console.WriteLine("3. Multiplication");
         Console.WriteLine("4. Division");
-        Console.WriteLine("5. Modulus");
-        Console.WriteLine("6. Exit");
+        Console.WriteLine("5. Exit");
     }
-
     static int GetUserChoice()
     {
-        Console.Write("Enter your choice (1-6): ");
+        Console.Write("Enter your choice (1-5): ");
         return int.Parse(Console.ReadLine());
     }
-
-    static void Addition()
+    static void Add()
     {
         Console.Write("Enter the first number: ");
         double num1 = double.Parse(Console.ReadLine());
@@ -65,8 +55,7 @@ class Program
         double result = num1 + num2;
         Console.WriteLine($"The result of {num1} + {num2} is {result}");
     }
-
-    static void Subtraction()
+    static void Sub()
     {
         Console.Write("Enter the first number: ");
         double num1 = double.Parse(Console.ReadLine());
@@ -75,8 +64,7 @@ class Program
         double result = num1 - num2;
         Console.WriteLine($"The result of {num1} - {num2} is {result}");
     }
-
-    static void Multiplication()
+    static void Multi()
     {
         Console.Write("Enter the first number: ");
         double num1 = double.Parse(Console.ReadLine());
@@ -85,8 +73,7 @@ class Program
         double result = num1 * num2;
         Console.WriteLine($"The result of {num1} * {num2} is {result}");
     }
-
-    static void Division()
+    static void Div()
     {
         Console.Write("Enter the first number: ");
         double num1 = double.Parse(Console.ReadLine());
@@ -99,20 +86,5 @@ class Program
         }
         double result = num1 / num2;
         Console.WriteLine($"The result of {num1} / {num2} is {result}");
-    }
-
-    static void Modulus()
-    {
-        Console.Write("Enter the first number: ");
-        int num1 = int.Parse(Console.ReadLine());
-        Console.Write("Enter the second number: ");
-        int num2 = int.Parse(Console.ReadLine());
-        if (num2 == 0)
-        {
-            Console.WriteLine("Error: Division by zero is not allowed.");
-            return;
-        }
-        int result = num1 % num2;
-        Console.WriteLine($"The result of {num1} % {num2} is {result}");
     }
 }
