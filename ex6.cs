@@ -1,37 +1,31 @@
 using System;
-
-class Program
+class Lab1f
 {
     static void Main(string[] args)
     {
         Console.Write("Enter the first number: ");
-        if (!int.TryParse(Console.ReadLine(), out int num1))
-        {
-            Console.WriteLine("Invalid input. Please enter a valid integer.");
-            return;
-        }
+        int num1 = int.Parse(Console.ReadLine());
 
         Console.Write("Enter the second number: ");
-        if (!int.TryParse(Console.ReadLine(), out int num2))
-        {
-            Console.WriteLine("Invalid input. Please enter a valid integer.");
-            return;
-        }
+        int num2 = int.Parse(Console.ReadLine());
 
-        SwapTwoNumber(num1, num2, out int swap_a, out int swap_b);
+        Console.WriteLine("Before swapping:");
+        Console.WriteLine("num1 = " + num1);
+        Console.WriteLine("num2 = " + num2);
 
-        Console.WriteLine($"The swapped number {num1} and {num2} is: {swap_a} and {swap_b}");
+        Swap(ref num1, ref num2);
+
+        Console.WriteLine("After swapping:");
+        Console.WriteLine("num1 = " + num1);
+        Console.WriteLine("num2 = " + num2);
+        Console.ReadLine();
     }
 
-    static void SwapTwoNumber(int a, int b, out int swap_a, out int swap_b)
+    static void Swap(ref int a, ref int b)
     {
-       
-        int c = a;
+        int temp = a;
         a = b;
-        b = c;
-        swap_a = a;
-        swap_b = b;
-        
-        
+        b = temp;
+        Console.ReadLine();
     }
 }
