@@ -1,46 +1,35 @@
 using System;
-
-class ex1
+class Lab1a
 {
-    static void Main(string[] args)
-    {
-        Console.Write("Enter a year: ");
-        int year = int.Parse(Console.ReadLine());
-
-        if (IsLeapYear(year))
-        {
-            Console.WriteLine($"{year} is a leap year.");
-        }
-        else
-        {
-            Console.WriteLine($"{year} is not a leap year.");
-        }
-        Console.ReadLine();
-    }
-
     static bool IsLeapYear(int year)
     {
-        if (year % 4 == 0)
-        {
-            if (year % 100 == 0)
-            {
-                if (year % 400 == 0)
-                {
+        if (year % 4 == 0){
+            if (year % 100 == 0){
+                if (year % 400 == 0){
                     return true;
                 }
-                else
-                {
+                else{
                     return false;
                 }
             }
-            else
-            {
+            else{
                 return true;
             }
         }
-        else
-        {
+        else{
             return false;
         }
+    }
+    static void Main(string[] args)
+    {
+        Console.Write("Year: ");
+        int year = int.Parse(Console.ReadLine());
+        if (IsLeapYear(year)){
+            Console.WriteLine($"{year} is a leap year.");
+        }
+        else{
+            Console.WriteLine($"{year} is not a leap year.");
+        }
+        Console.ReadLine();
     }
 }
