@@ -6,92 +6,113 @@ class Program
     {
         while (true)
         {
-            ShowMenu();
-            string choice = Console.ReadLine();
-
-            if (choice == "5")
-            {
-                Console.WriteLine("Exiting the calculator. Goodbye!");
-                break;
-            }
-
-            Console.Write("Enter the first number: ");
-            if (!double.TryParse(Console.ReadLine(), out double num1))
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-                continue;
-            }
-
-            Console.Write("Enter the second number: ");
-            if (!double.TryParse(Console.ReadLine(), out double num2))
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-                continue;
-            }
-
-            double result = 0;
-            bool validChoice = true;
+            DisplayMenu();
+            int choice = GetUserChoice();
 
             switch (choice)
             {
-                case "1":
-                    result = Add(num1, num2);
+                case 1:
+                    Addition();
                     break;
-                case "2":
-                    result = Subtract(num1, num2);
+                case 2:
+                    Subtraction();
                     break;
-                case "3":
-                    result = Multiply(num1, num2);
+                case 3:
+                    Multiplication();
                     break;
-                case "4":
-                    result = Divide(num1, num2);
+                case 4:
+                    Division();
                     break;
+                case 5:
+                    Modulus();
+                    break;
+                case 6:
+                    Console.WriteLine("Exiting calculator...");
+                    return;
                 default:
-                    Console.WriteLine("Invalid choice. Please select a valid option.");
-                    validChoice = false;
+                    Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
 
-            if (validChoice)
-            {
-                Console.WriteLine($"The result is: {result}");
-            }
+            Console.WriteLine();
         }
     }
 
-    static void ShowMenu()
+    static void DisplayMenu()
     {
-        Console.WriteLine("\nInteractive Calculator Menu:");
-        Console.WriteLine("1. Add");
-        Console.WriteLine("2. Subtract");
-        Console.WriteLine("3. Multiply");
-        Console.WriteLine("4. Divide");
-        Console.WriteLine("5. Exit");
-        Console.Write("Select an option (1-5): ");
+        Console.WriteLine("Welcome to the Interactive Calculator!");
+        Console.WriteLine("Please select an operation:");
+        Console.WriteLine("1. Addition");
+        Console.WriteLine("2. Subtraction");
+        Console.WriteLine("3. Multiplication");
+        Console.WriteLine("4. Division");
+        Console.WriteLine("5. Modulus");
+        Console.WriteLine("6. Exit");
     }
 
-    static double Add(double a, double b)
+    static int GetUserChoice()
     {
-        return a + b;
+        Console.Write("Enter your choice (1-6): ");
+        return int.Parse(Console.ReadLine());
     }
 
-    static double Subtract(double a, double b)
+    static void Addition()
     {
-        return a - b;
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
+        double result = num1 + num2;
+        Console.WriteLine($"The result of {num1} + {num2} is {result}");
     }
 
-    static double Multiply(double a, double b)
+    static void Subtraction()
     {
-        return a * b;
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
+        double result = num1 - num2;
+        Console.WriteLine($"The result of {num1} - {num2} is {result}");
     }
 
-    static double Divide(double a, double b)
+    static void Multiplication()
     {
-        if (b == 0)
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
+        double result = num1 * num2;
+        Console.WriteLine($"The result of {num1} * {num2} is {result}");
+    }
+
+    static void Division()
+    {
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
+        if (num2 == 0)
         {
             Console.WriteLine("Error: Division by zero is not allowed.");
-            return 0;
+            return;
         }
-        return a / b;
+        double result = num1 / num2;
+        Console.WriteLine($"The result of {num1} / {num2} is {result}");
+    }
+
+    static void Modulus()
+    {
+        Console.Write("Enter the first number: ");
+        int num1 = int.Parse(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        int num2 = int.Parse(Console.ReadLine());
+        if (num2 == 0)
+        {
+            Console.WriteLine("Error: Division by zero is not allowed.");
+            return;
+        }
+        int result = num1 % num2;
+        Console.WriteLine($"The result of {num1} % {num2} is {result}");
     }
 }
